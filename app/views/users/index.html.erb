@@ -1,0 +1,37 @@
+
+
+<%= render 'users/list', book: @book, user: @user %>
+
+		<div class="col-xs-9">
+
+			<h2>Users</h2>
+
+			<table class= "table table-hover">
+
+				<thead>
+			    	<tr>
+			    		<th> image</th>
+						<th> name</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<% @users.each do |user| %>
+						<tr>
+							<td>
+							<%= attachment_image_tag user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '50', :height => '50' %>
+							</td>
+
+							<td><%= user.name %></td>
+
+							<td><%= link_to "Show", user_path(user.id) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

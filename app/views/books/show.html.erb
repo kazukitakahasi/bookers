@@ -1,14 +1,53 @@
 
 
-<p>Title:
-<%= @book.title %> </p>
+<%= render 'users/list', book: @booknew, user: @user %>
 
-<p>Body:
-<%= @book.body %> </p>
+		<div class="col-xs-9">
 
-<%= link_to "Edit", edit_book_path(@book), class: "edit_#{@book.id}" %>
+			<h2>Book detail</h2>
 
-<%= link_to "Back", books_path, class: "back" %>
+			<table class= "table">
+				<thead>
+			    	<tr>
+			    		<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr>
+						<td><%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100,class: "profile-img", fallback: "no_image.jpg" %><br>
+							<%= link_to user_path(@book.user) do %>
+							<%= @book.user.name %>
+							<% end %>
+						</td>
+						<td><%= @book.title %></td>
+						<td><%= @book.opinion %></td>
+						<td>
+							<% if @book.user == current_user %>
+							<%= link_to "Edit", edit_book_path(@book), class: "btn-sm btn-success" %>
+							<% end %>
+						</td>
+						<td>
+							<% if @book.user == current_user %>
+							<%= link_to "Destroy", book_path(@book),method: :delete, "data-confirm" => "Are you sure", class: "btn-sm btn-danger" %>
+							<% end %>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+
+
 
 
 

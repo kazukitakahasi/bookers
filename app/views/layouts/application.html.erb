@@ -11,15 +11,89 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">
+              Bookers
+            </span>
+          </div>
+
+          <% if user_signed_in? %>
+
+            <div class="collapse navbar-collapse" id="navbarEexample7">
+              <ul class="nav navbar-nav  navbar-right">
+
+                <li>
+                  <%= link_to user_path(current_user), class: "glyphicon glyphicon-home" do %> Home <% end %>
+                </li>
+
+                <li>
+                  <%= link_to users_path, class: "glyphicon glyphicon-user" do %> Users <% end %>
+                </li>
+
+                <li>
+                  <%= link_to books_path, class: "glyphicon glyphicon-book" do %> Books <% end %>
+                </li>
+
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" do %>
+                    Log out
+                  <% end %>
+                </li>
+
+              </ul>
+            </div>
+
+          <% else %>
+
+            <div class="collapse navbar-collapse" id="navbarEexample7">
+              <ul class="nav navbar-nav  navbar-right">
+
+                <li>
+                  <%= link_to root_path, class:"glyphicon glyphicon-home" do %> Top <% end %>
+                </li>
+
+                <li>
+                  <%= link_to home_about_path, class:"glyphicon glyphicon-user" do %> About <% end %>
+                </li>
+
+                <li>
+                  <%= link_to new_user_registration_path, class:"glyphicon glyphicon-edit" do %> Sign up <% end %>
+                </li>
+
+                <li>
+                  <%= link_to new_user_session_path, class:"glyphicon glyphicon-log-in" do %> Log in <% end %>
+                </li>
+
+          <% end %>
+        </div>
+      </nav>
+    </header>
 
   	<% flash.each do |key, value| %>
     <div class= "notice">
   		<div class= "alert alert-<%= key %>">
-  			 <%= value %>
+  			<%= value %>
   		</div>
     </div>
   	<% end %>
 
     <%= yield %>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-3 col-xs-offset-9">CopyRight Infratop.inc</div>
+          </div>
+        </div>
+      </footer>
+
   </body>
 </html>

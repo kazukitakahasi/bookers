@@ -1,46 +1,41 @@
-<h1>Books</h1>
 
-<table>
-	<thead>
-    	<tr>
-			<th> Title</th>
-			<th> Body</th>
-			<th></th>
-		</tr>
-	</thead>
+<%= render 'users/list', book: @book, user: @user %>
 
-	<tbody>
-	<% @books.each do |book| %>
+		<div class="col-xs-9">
 
-		<tr>
-			<td> <%= book.title %></td>
-			<td> <%= book.body %></td>
+			<h2>Books</h2>
 
-			<td> <%= link_to "Show", book_path(book), class: "show_#{book.id}"  %></td>
+			<table class= "table table-hover">
+				<thead>
+			    	<tr>
+			    		<th></th>
+						<th> Title</th>
+						<th> Opinion</th>
+					</tr>
+				</thead>
 
-			<td> <%= link_to "Edit", edit_book_path(book), class: "edit_#{book.id}" %></td>
+				<tbody>
+				<% @books.each do |book| %>
 
-			<td> <%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?" , class: "destroy_#{book.id} "%></td>
-		</tr>
+					<tr>
+						<td> <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50,class: "profile-img", fallback: "no_image.jpg", :width => '50', :height => '50' %></td>
+						<td><%= link_to book_path(book.id) do %>
+							<%= book.title %>
+							<% end %>
+							</td>
+						<td><%= book.opinion %></td>
+					</tr>
 
-	<% end %>
-	</tbody>
+				<% end %>
+				</tbody>
 
-</table>
+			</table>
+		</div>
+
+	</div>
+</div>
 
 
 
-<h2>New book</h2>
 
-<%= form_for(@book) do |f| %>
-
-	<h3> Title</h3>
-	<%= f.text_field :title, class: "book_title" %>
-
-	<h3> Body</h3>
-	<%= f.text_area :body, class: "book_body" %>
-
-	<%= f.submit 'Create Book', class: "actions" %>
-
-<% end %>
 

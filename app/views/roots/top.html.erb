@@ -1,0 +1,29 @@
+
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-xs-offset-3 col-xs-6">
+
+			<h1>welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers!!</h1>
+			<p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers</p>
+			<p>you can share and exchange your opinions ,impressions , and emotions</p>
+			<p>about various books!</p>
+
+		</div>
+	</div>
+
+	<div class="btn-group-wrapper" role="group">
+
+		<div class="row">
+			<%= link_to new_user_session_path, class: "btn btn-info col-xs-offset-3 col-xs-5" do %>
+				Log in
+			<% end %>
+			<%= link_to new_user_registration_path, class: "btn btn-success col-xs-offset-3 col-xs-5" do %>
+		 		Sign up
+			<% end %>
+		</div>
+	</div>
+
+</div>
